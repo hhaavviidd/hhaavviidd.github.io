@@ -1,0 +1,148 @@
+/* ---------- Estilos generales ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "American Typewriter", sans-serif;
+  background-color: #FF3B3E;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ---------- Grid principal ---------- */
+body {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+/* ---------- Encabezado ---------- */
+.header {
+  grid-area: header;
+  background-color: #B40000;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* ---------- Navegación ---------- */
+.nav {
+  grid-area: nav;
+  background-color: #910002;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.nav li {
+  margin: 0.5rem 1rem;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Contenido principal ---------- */
+.main {
+  grid-area: main;
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+/* ---------- Secciones ---------- */
+.intro, .caracteristicas, .ejemplo {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ---------- Grid de características ---------- */
+.grid-caracteristicas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background-color: #F47474;
+  padding: 1.2rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ---------- Ejemplo de layout con Grid ---------- */
+.grid-ejemplo {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.grid-ejemplo .item {
+  background-color: #F55D60;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.grid-ejemplo .item:nth-child(1) { grid-area: header; }
+.grid-ejemplo .item:nth-child(2) { grid-area: sidebar; }
+.grid-ejemplo .item:nth-child(3) { grid-area: content; }
+.grid-ejemplo .item:nth-child(4) { grid-area: footer; }
+
+/* ---------- Pie de página ---------- */
+.footer {
+  grid-area: footer;
+  background-color: #A90002;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ---------- Responsividad ---------- */
+@media (max-width: 800px) {
+  .grid-ejemplo {
+    grid-template-areas:
+      "header"
+      "content"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
